@@ -30,7 +30,7 @@ const ShieldIcon = () => (
 
 const Navbar = ({ account, setPage, connectWallet }) => (
     <nav className="bg-gray-800/30 backdrop-blur-md p-4 sticky top-0 z-50 border-b border-gray-700/50">
-        <div className="container mx-auto flex justify-between items-center">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
             <div className="flex items-center cursor-pointer" onClick={() => setPage('home')}>
                 <ShieldIcon />
                 <h1 className="text-2xl font-bold text-yellow-400">HASH Market</h1>
@@ -47,7 +47,7 @@ const Navbar = ({ account, setPage, connectWallet }) => (
                     {`${account.substring(0, 6)}...${account.substring(account.length - 4)}`}
                 </div>
             ) : (
-                <button onClick={connectWallet} className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105">
+                <button onClick={connectWallet} className="bg-indigo-600 hover:bg-indigo-500 text-white font-bold py-2 px-4 rounded-lg transition duration-300 transform hover:scale-105">
                     Connect Wallet
                 </button>
             )}
@@ -82,7 +82,7 @@ const HowItWorksSection = () => {
                             <h3 className="text-3xl font-bold text-white mb-4">AI-Powered Initial Scan</h3>
                             <p className="text-gray-400">A machine learning model automatically scans all listed websites to proactively detect and flag potential phishing threats by analyzing over 32 unique attributes.</p>
                         </div>
-                        <div className="bg-gray-800 p-8 rounded-xl shadow-lg relative h-64 overflow-hidden">
+                        <div className="bg-gray-800 p-8 rounded-xl shadow-lg relative h-64 md:h-72 lg:h-80 overflow-hidden">
                             <div className="font-mono text-xs text-yellow-400/50 attribute-scroll">
                                 {attributes.map((attr, i) => <p key={i}>{attr}: {Math.round(Math.random())}</p>)}
                                 {attributes.map((attr, i) => <p key={i+attributes.length}>{attr}: {Math.round(Math.random())}</p>)}
@@ -94,7 +94,7 @@ const HowItWorksSection = () => {
 
                     {/* Step 2: On-Chain Reporting */}
                     <div className="grid md:grid-cols-2 gap-12 items-center">
-                         <div className="bg-gray-800 p-8 rounded-xl shadow-lg h-64 flex items-center justify-center order-2 md:order-1">
+                         <div className="bg-gray-800 p-8 rounded-xl shadow-lg h-56 md:h-64 flex items-center justify-center order-2 md:order-1">
                              <div className="on-chain-graphic">
                                  <div className="report-icon">⚠️</div>
                                  <div className="dots"></div>
@@ -115,7 +115,7 @@ const HowItWorksSection = () => {
                             <h3 className="text-3xl font-bold text-white mb-4">Decentralized Blacklist</h3>
                             <p className="text-gray-400">The marketplace periodically reads the immutable data from the smart contract to build and maintain an up-to-date blacklist of confirmed malicious wallets.</p>
                         </div>
-                        <div className="bg-gray-800 p-8 rounded-xl shadow-lg h-64 flex items-center justify-center">
+                        <div className="bg-gray-800 p-8 rounded-xl shadow-lg h-56 md:h-64 flex items-center justify-center">
                             <div className="blacklist-graphic">
                                 <div className="blacklist-item">0x123...abc <span className="banned-mark">❌</span></div>
                                 <div className="blacklist-item">0x456...def <span className="banned-mark">❌</span></div>
@@ -126,7 +126,7 @@ const HowItWorksSection = () => {
                     
                     {/* Step 4: Enforcement */}
                     <div className="grid md:grid-cols-2 gap-12 items-center">
-                        <div className="bg-gray-800 p-8 rounded-xl shadow-lg h-64 flex items-center justify-center order-2 md:order-1">
+                        <div className="bg-gray-800 p-8 rounded-xl shadow-lg h-56 md:h-64 flex items-center justify-center order-2 md:order-1">
                             <div className="enforcement-graphic">
                                 <span className="wallet-icon">💳</span>
                                 <div className="ban-hammer">🚫</div>
@@ -146,7 +146,7 @@ const HowItWorksSection = () => {
                             <h3 className="text-3xl font-bold text-white mb-4">Public Transparency & Auditing</h3>
                             <p className="text-gray-400">Using the blockchain ensures all reports are public and tamper-proof, providing complete transparency and allowing anyone to easily audit security actions.</p>
                         </div>
-                         <div className="bg-gray-800 p-8 rounded-xl shadow-lg h-64 flex items-center justify-center">
+                         <div className="bg-gray-800 p-8 rounded-xl shadow-lg h-56 md:h-64 flex items-center justify-center">
                             <div className="audit-graphic">
                                <div className="blockchain-graphic">
                                    {[...Array(3)].map((_, i) => (
@@ -176,11 +176,11 @@ const HomePage = ({ setPage }) => (
             <p className="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl mb-8">
                 Your secure gateway to the decentralized economy. Every listing is scanned for phishing and malicious threats.
             </p>
-            <div className="space-x-4">
-                <button onClick={() => document.getElementById('marketplaces').scrollIntoView({ behavior: 'smooth' })} className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105">
+            <div className="flex flex-col sm:flex-row gap-4 sm:gap-0 sm:space-x-4">
+                <button onClick={() => document.getElementById('marketplaces').scrollIntoView({ behavior: 'smooth' })} className="bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105 w-full sm:w-auto">
                     Explore Markets
                 </button>
-                <button onClick={() => setPage('listyoursite')} className="bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold py-3 px-8 rounded-lg transition duration-300 hover:bg-yellow-400 hover:text-gray-900">
+                <button onClick={() => setPage('listyoursite')} className="bg-transparent border-2 border-yellow-400 text-yellow-400 font-bold py-3 px-8 rounded-lg transition duration-300 hover:bg-yellow-400 hover:text-gray-900 w-full sm:w-auto">
                     List Your Site
                 </button>
             </div>
