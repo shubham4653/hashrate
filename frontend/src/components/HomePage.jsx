@@ -1,5 +1,6 @@
 import HowItWorksSection from './HowItWorksSection';
 import MarketplacesSection from './MarketplacesSection';
+import TextType from '../assets/TextType';
 import ChartsSidebar from './ChartsSidebar';
 import StatsSection from './StatsSection';
 
@@ -7,7 +8,14 @@ const HomePage = ({ setPage }) => (
     <div>
         <div className="text-center py-20 px-4">
             <h1 className="text-5xl md:text-7xl font-extrabold text-white mb-4">
-                Discover Marketplaces. <span className="animated-gradient">Vetted for Security.</span>
+                Discover Marketplaces. <span className="animated-gradient">
+                    <TextType
+                        text={["Vetted for Security."]}
+                        typingSpeed={75}
+                        pauseDuration={1500}
+                        showCursor={true}
+                        cursorCharacter="|" />
+                    </span>
             </h1>
             <p className="text-gray-400 max-w-2xl mx-auto text-lg md:text-xl mb-8">
                 Your secure gateway to the decentralized economy. Every listing is scanned for phishing and malicious threats.
