@@ -1,8 +1,8 @@
 import { initialMockMarketplaces } from '../data/mockData';
 
 const MarketplacesSection = () => (
-    <div id="marketplaces" className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+    <div id="marketplaces" className="container mx-auto px-4 py-12 h-240 overflow-y-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {initialMockMarketplaces.map(market => (
                 <div key={market.id} className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-yellow-400/20 transition-shadow duration-300 transform hover:-translate-y-1">
                     <img src={market.imageUrl} alt={market.name} className="w-full h-56 object-cover" />
