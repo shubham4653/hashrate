@@ -1,27 +1,58 @@
+import { useState } from 'react';
 import { initialMockMarketplaces } from '../data/mockData';
+import MarketplaceCard from './MarketplaceCard';
+import MarketplacesFilters from './MarketplacesFilters';
 
-const MarketplacesSection = () => (
-    <div id="marketplaces" className="container mx-auto px-4 py-12 h-240 overflow-y-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {initialMockMarketplaces.map(market => (
-                <div key={market.id} className="bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-yellow-400/20 transition-shadow duration-300 transform hover:-translate-y-1">
-                    <img src={market.imageUrl} alt={market.name} className="w-full h-56 object-cover" />
-                    <div className="p-6">
-                        <h3 className="text-2xl font-bold text-white mb-2">{market.name}</h3>
-                        <p className="text-gray-400 mb-4">{market.description}</p>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                            {market.tags.map(tag => (
-                                <span key={tag} className="bg-gray-700 text-xs font-semibold px-3 py-1 rounded-full">{tag}</span>
-                            ))}
-                        </div>
-                        <a href={market.url} target="_blank" rel="noopener noreferrer" className="inline-block bg-gray-700 hover:bg-gray-600 text-yellow-400 font-bold py-2 px-4 rounded-lg transition duration-300">
-                            Visit Site &rarr;
-                        </a>
-                    </div>
-                </div>
-            ))}
+const MarketplacesSection = () => {
+    const [searchTerm, setSearchTerm] = useState('');
+    const [selectedFilter, setSelectedFilter] = useState('all');
+
+    const filteredMarketplaces = initialMockMarketplaces.filter(market => {
+        const matchesSearch = market.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                              market.description.toLowerCase().includes(searchTerm.toLowerCase());
+        let matchesFilter = selectedFilter === 'all';
+        if (!matchesFilter) {
+            switch (selectedFilter) {
+                case 'nfts':
+                    matchesFilter = market.tags.includes('NFTs');
+                    break;
+                case 'defi':
+                    matchesFilter = market.tags.includes('Finance');
+                    break;
+                case 'gaming':
+                    matchesFilter = market.tags.includes('Gaming');
+                    break;
+                case 'other':
+                    matchesFilter = !market.tags.some(tag => ['nfts', 'finance', 'gaming'].includes(tag));
+                    break;
+                default:
+                    matchesFilter = false;
+            }
+        }
+        return matchesSearch && matchesFilter;
+    });
+
+    return (
+        <div id="marketplaces" className="container mx-auto px-4 py-4 border-2 border-amber-400 rounded-4xl overflow-y-auto h-240">
+            <MarketplacesFilters
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                selectedFilter={selectedFilter}
+                setSelectedFilter={setSelectedFilter}
+            />
+
+            {/* Marketplaces Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {filteredMarketplaces.length > 0 ? (
+                    filteredMarketplaces.map(market => (
+                        <MarketplaceCard key={market.id} market={market} />
+                    ))
+                ) : (
+                    <p className="col-span-full text-center text-gray-400">No marketplaces found.</p>
+                )}
+            </div>
         </div>
-    </div>
-);
+    );
+};
 
 export default MarketplacesSection;

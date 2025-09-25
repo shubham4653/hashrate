@@ -1,5 +1,7 @@
 import HowItWorksSection from './HowItWorksSection';
 import MarketplacesSection from './MarketplacesSection';
+import ChartsSidebar from './ChartsSidebar';
+import StatsSection from './StatsSection';
 
 const HomePage = ({ setPage }) => (
     <div>
@@ -20,12 +22,19 @@ const HomePage = ({ setPage }) => (
             </div>
         </div>
 
-        <MarketplacesSection />
-        
+        {/* <StatsSection /> */}
+
+        <div id="marketplaces" className="flex flex-col lg:flex-row gap-8 px-4 mb-12">
+            {/* <ChartsSidebar /> */}
+            <div className="flex-1">
+                <MarketplacesSection />
+            </div>
+        </div>
+
         <HowItWorksSection />
 
         <div className="text-center mt-16">
-             <button onClick={() => setPage('admindashboard')} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors duration-300">
+            <button onClick={() => setPage('admindashboard')} className="text-gray-500 hover:text-yellow-400 text-sm transition-colors duration-300">
                 Admin Dashboard
             </button>
         </div>

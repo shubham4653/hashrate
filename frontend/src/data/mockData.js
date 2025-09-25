@@ -8,7 +8,10 @@ export const initialMockMarketplaces = [
     { id: 5, name: 'Rarible', description: 'Multi-chain community-centric NFT marketplace and issuance platform.', url: 'https://rarible.com', tags: ['NFTs', 'Art', 'Community'], imageUrl: 'https://placehold.co/600x400/1E1E1E/FBBF24?text=Rarible' },
     { id: 6, name: 'Blur', description: 'Pro trader focused NFT marketplace with advanced features and analytics.', url: 'https://blur.io', tags: ['NFTs', 'Pro', 'Analytics'], imageUrl: 'https://placehold.co/600x400/1E1E1E/FBBF24?text=Blur' },
     { id: 7, name: 'LooksRare', description: 'Community-first NFT marketplace with rewards for traders and creators.', url: 'https://looksrare.org', tags: ['NFTs', 'Rewards', 'Community'], imageUrl: 'https://placehold.co/600x400/1E1E1E/FBBF24?text=LooksRare' },
-    { id: 8, name: 'Coinbase NFT', description: 'Coinbase’s NFT platform for discovering, buying, and selling NFTs.', url: 'https://nft.coinbase.com', tags: ['NFTs', 'Exchange', 'Discover'], imageUrl: 'https://placehold.co/600x400/1E1E1E/FBBF24?text=Coinbase+NFT' }
+    { id: 8, name: 'Coinbase NFT', description: 'Coinbase’s NFT platform for discovering, buying, and selling NFTs.', url: 'https://nft.coinbase.com', tags: ['NFTs', 'Exchange', 'Discover'], imageUrl: 'https://placehold.co/600x400/1E1E1E/FBBF24?text=Coinbase+NFT' },
+    { id: 9, name: 'Blur', description: 'Pro trader focused NFT marketplace with advanced features and analytics.', url: 'https://blur.io', tags: ['NFTs', 'Pro', 'Analytics'], imageUrl: 'https://placehold.co/600x400/1E1E1E/FBBF24?text=Blur' },
+    { id: 10, name: 'LooksRare', description: 'Community-first NFT marketplace with rewards for traders and creators.', url: 'https://looksrare.org', tags: ['NFTs', 'Rewards', 'Community'], imageUrl: 'https://placehold.co/600x400/1E1E1E/FBBF24?text=LooksRare' },
+    { id: 11, name: 'Coinbase NFT', description: 'Coinbase’s NFT platform for discovering, buying, and selling NFTs.', url: 'https://nft.coinbase.com', tags: ['NFTs', 'Exchange', 'Discover'], imageUrl: 'https://placehold.co/600x400/1E1E1E/FBBF24?text=Coinbase+NFT' }
 ];
 
 export const initialMockReportedSites = [
