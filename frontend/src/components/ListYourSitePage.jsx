@@ -46,6 +46,8 @@ const ListYourSitePage = ({ account }) => {
                 <h2 className="text-4xl font-bold text-white mb-4 text-center">List Your Marketplace</h2>
                 <p className="text-gray-400 mb-8 text-center">Submit your site for verification. Our backend will perform an automated security scan.</p>
                 {account ? (
+                    <div>
+                        
                     <form onSubmit={handleSubmit} className="bg-gray-800 p-8 rounded-xl shadow-lg space-y-6">
                         <div>
                             <label htmlFor="url" className="block text-sm font-medium text-gray-300 mb-2">Marketplace URL</label>
@@ -78,7 +80,7 @@ const ListYourSitePage = ({ account }) => {
                         </div>
                         
                         <button type="submit" disabled={!formData.url || (status && status.type === 'loading')} className="w-full bg-yellow-400 hover:bg-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-lg transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
-                            {status && status.type === 'loading' ? 'Verifying...' : 'Submit for Verification'}
+                            {status && status.type === 'loading' ? 'Verifying...' : 'List Marketplace'}
                         </button>
                         {status && (
                             <p className={`mt-4 text-sm text-center ${status.type === 'success' ? 'text-green-400' : 'text-red-400'}`}>
@@ -86,6 +88,8 @@ const ListYourSitePage = ({ account }) => {
                             </p>
                         )}
                     </form>
+                    
+                    </div>
                 ) : (
                     <div className="bg-red-900/50 border border-red-500 text-red-300 p-4 rounded-lg text-center">
                         Please connect your wallet to list a site.
@@ -93,7 +97,8 @@ const ListYourSitePage = ({ account }) => {
                 )}
 
             </div>
-            <ListedSitesSection />
+            {account && <ListedSitesSection /> }
+            
         </div>
     );
 };
